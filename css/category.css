@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url("../font/Peralta-Regular.ttf");
+}
+
+/*------------navigation bar------------*/
+.navbar {
+    background: #333;
+    height: 65px;
+}
+
+.navbar .left {
+    float: left;
+}
+
+.navbar .left p {
+    color: white;
+    font-family: 'CustomFont';
+    font-size: 37px;
+    margin-left: 30px;
+    margin-top: 3px;
+    border: 1px solid transparent;
+    padding: 3px;
+    transition: border-color 0.3s ease;
+}
+
+.navbar .left p:hover {
+    border-color: white;
+}
+
+.navbar .right {
+    float: right;
+}
+
+.navbar .right p {
+    color: white;
+    font-size: 18px;
+    margin-right: 20px;
+    margin-top: 14px;
+    border: 1px solid transparent;
+    padding: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.navbar .right p:hover {
+    border-color: white;
+}
+
+
+/*------------menu------------*/
+.menu {
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu .left {
+    /*float: left;*/
+    width: 65%;
+}
+
+.menu .left ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+}
+
+.menu .left a {
+    color: black;
+}
+
+.menu .right {
+    position: relative;
+    margin-right: 15px;
+    margin-top: 8px;
+}
+
+.expanded {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 200px;
+    min-height: 50px;
+    z-index: 9999;
+    background-color: lightgray;
+    padding: 5px;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+.menu .right:hover .expanded {
+    display: block;
+}
+
+.menu .right p .expanded {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+.menu .right p:hover .expanded {
+    display: block;
+}
+
+
+/*------------location------------*/
+.location {
+    height: 60px;
+    position: relative;
+    background-color: #f5f5f5;
+    box-shadow: inset 0px 15px 10px -15px #000;
+}
+
+.location p {
+    position: absolute;
+    left: 40px;
+    top: 18px;
+    color: #a0a0a0;
+    font-weight: bold;
+}
+
+/*------------category------------*/
+.category {
+    height: 450px;
+    background: #f5f5f5;
+}
+
+.category .hd p {
+    font-size: 28px;
+    font-weight: bold;
+    padding-left: 40px;
+}
+
+.category .bd {
+    padding-top: 30px;
+}
+
+.category .bd ul {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.category .bd ul li {
+    width: 260px;
+    height: 300px;
+    margin-right: 60px;
+    text-align: center;
+    background: white;
+}
+
+.category .bd ul li:first-child {
+    margin-left: 60px;
+}
+
+.category .bd ul li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+}
+
+.img_goods {
+    width: 190px;
+}
+
+.goods_name {
+    color: black;
+}
+
+.goods_price {
+    color: red;
+}
+
+.goods_button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    color: rgb(46, 49, 49);
+    font-size: 16px;
+}
+
+.goods_button:hover {
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+
+/*------------footer------------*/
+.footer {
+    height: 100px;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer p {
+    margin: 5px 0;
+    color: white;
+}
+
+.footer p a {
+    color: white;
+}

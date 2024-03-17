@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Shop</title>
+    <link rel="icon" href="./shop.ico">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="left">
+            <a href="index.html">
+                <p>Online Shop</p>
+            </a>
+        </div>
+        <div class="right">
+            <a href="">
+                <p>login</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu">
+        <div class="left">
+            <ul>
+                <li><a href="#">home</a></li>
+                <li><a href="#">Bags</a></li>
+                <li><a href="#">Toys</a></li>
+                <li><a href="#">Snacks</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Clothes</a></li>
+                <li><a href="#">Medicine</a></li>
+                <li><a href="#">Architecture</a></li>
+                <li><a href="#">Smart Device</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            Shop Cart: ¥ <span id="total_price">0</span>
+            <div class="expanded"></div>
+        </div>
+    </div>
+
+    <div class="location">
+        <p>home</p>
+    </div>
+
+    <div class="banner">
+        <div class="wrapper">
+            <div class="aside">
+                <ul>
+                    <li><a href="#">Bags</a></li>
+                    <li><a href="#">Toys</a></li>
+                    <li><a href="#">Snacks</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Clothes</a></li>
+                    <li><a href="#">Medicine</a></li>
+                    <li><a href="#">Architecture</a></li>
+                    <li><a href="#">Smart Device</a></li>
+                </ul>
+            </div>
+            <div class="image">
+                <a href="#">
+                    <img src="./images/banner_1.png" id="banner_img">
+                </a>
+            </div>
+
+            <div id="prev"></div>
+            <div id="next"></div>
+
+            <ol>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="goods">
+        <div class="hd">
+            <p>Recommendation</p>
+        </div>
+        <div class="bd">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="./images/good_1.jpg" class="img_goods" alt="">
+                        <h3 class="goods_name">remote control car</h3>
+                        <h4 class="goods_price">￥ 180</h4>
+                        <button class="goods_button" data-name="remote control car" data-price="180">Add To Chart</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./images/good_2.jpg" class="img_goods" alt="">
+                        <h3 class="goods_name">snacks</h3>
+                        <h4 class="goods_price">￥ 119</h4>
+                        <button class="goods_button" data-name="snacks" data-price="119">Add To Chart</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./images/good_3.jpg" class="img_goods" alt="">
+                        <h3 class="goods_name">cold granules</h3>
+                        <h4 class="goods_price">￥ 20</h4>
+                        <button class="goods_button" data-name="cold granules" data-price="20">Add To Chart</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./images/good_4.jpg" class="img_goods" alt="">
+                        <h3 class="goods_name">children's chair</h3>
+                        <h4 class="goods_price">￥ 20</h4>
+                        <button class="goods_button" data-name="children's chair" data-price="20">Add To Chart</button>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="./html/goods_phone.html">
+                        <img src="./images/good_5.jpg" class="img_goods" alt="">
+                        <h3 class="goods_name">mobile phone</h3>
+                        <h4 class="goods_price">￥ 6999</h4>
+                        <button class="goods_button" data-name="mobile phone" data-price="6999">Add To Chart</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./images/good_6.jpg" class="img_goods" alt="">
+                        <h3 class="goods_name">nike cloth</h3>
+                        <h4 class="goods_price">￥ 247</h4>
+                        <button class="goods_button" data-name="nike cloth" data-price="247">Add To Chart</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./images/good_7.jpg" class="img_goods" alt="">
+                        <h3 class="goods_name">basketball</h3>
+                        <h4 class="goods_price">￥ 120</h4>
+                        <button class="goods_button" data-name="basketball" data-price="120">Add To Chart</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./images/good_8.jpg" class="img_goods" alt="">
+                        <h3 class="goods_name">nike bag</h3>
+                        <h4 class="goods_price">￥ 179</h4>
+                        <button class="goods_button" data-name="nike bag" data-price="179">Add To Chart</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>
+            <a href="#">About Us</a> |
+            <a href="#">Help Center</a> |
+            <a href="#">Service</a> |
+            <a href="#">Delivery</a> |
+            <a href="#">Bussiness</a> |
+            <a href="#">Links</a>
+        </p>
+        <p>CopyRight @ 1155203419@link.cuhk.edu.hk</p>
+    </div>
+
+    <script src="./js/banner_switch.js"></script>
+    <script src="./js/shop_cart.js"></script>
+</body>
+</html>
