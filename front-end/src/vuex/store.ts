@@ -2,7 +2,8 @@ import { createStore } from 'vuex';
 
 export default createStore({
     state: {
-        cart: []
+        cart: [],
+        // userName: ''
     },
     mutations: {
         ADD_TO_CART(state, product) {
@@ -26,7 +27,10 @@ export default createStore({
         },
         REMOVE_FROM_CART(state, item) {
             state.cart = state.cart.filter(i => i.pid !== item.pid);
-        }
+        },
+        // SET_USERNAME(state, username) {
+        //     state.userName = username
+        // }
     },
     actions: {
         addToCart({ commit }, product) {
@@ -40,7 +44,10 @@ export default createStore({
         },
         removeFromCart({ commit }, item) {
             commit('REMOVE_FROM_CART', item);
-        }
+        },
+        // setUserName({ commit }, userName) {
+        //     commit('SET_USERNAME', userName)
+        // }
     },
     getters: {
         totalPrice: state => {

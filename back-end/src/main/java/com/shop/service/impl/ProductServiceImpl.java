@@ -1,6 +1,6 @@
 package com.shop.service.impl;
 
-import com.shop.Product;
+import com.shop.pojo.Product;
 import com.shop.mapper.ProductMapper;
 import com.shop.service.ProductService;
 import com.shop.utils.AliOssUtil;

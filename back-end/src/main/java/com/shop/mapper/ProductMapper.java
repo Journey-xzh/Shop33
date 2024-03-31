@@ -1,6 +1,6 @@
 package com.shop.mapper;
 
-import com.shop.Product;
+import com.shop.pojo.Product;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -22,14 +22,14 @@ public interface ProductMapper {
     @Select("select max(pid) from product")
     Integer getMaxId();
 
-    @Insert("insert into product (pid, catid, name, price, url)" +
+    @Insert("insert into product (pid, catid, name, price, url) " +
             "values (#{pid}, #{catid}, #{name}, #{price}, #{url})")
     void adminInsert(Product product);
 
     @Delete("delete from product where pid = #{pid}")
     void adminDelete(Integer pid);
 
-    @Update("update product set catid = #{catid}, name = #{name}, price = #{price}, url = #{url}" +
+    @Update("update product set catid = #{catid}, name = #{name}, price = #{price}, url = #{url} " +
             "where pid = #{pid}")
     void adminUpdate(Product product);
 }

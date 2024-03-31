@@ -1,6 +1,6 @@
 package com.shop.service;
 
-import com.shop.Product;
+import com.shop.pojo.Product;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

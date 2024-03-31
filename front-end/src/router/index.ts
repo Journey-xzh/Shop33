@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from "@/vuex/store";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: '/user',
+      redirect: '/login',
     },
     {
       path: '/user',
@@ -21,6 +22,10 @@ const router = createRouter({
       path: '/user/category/:catid?',
       component: () => import('../views/user/CategoryDetail.vue'),
       meta: { side: 'user' }
+    },
+    {
+      path: '/admin',
+      redirect: '/admin/category'
     },
     {
       path: '/admin/category',
@@ -41,6 +46,21 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  // const userName = store.state.userName
+  // console.log("userName: ", userName)
+  const userName = localStorage.getItem("userName")
+  console.log("userName: ", userName)
+  // 检查角色
+  if (to.meta.side === 'admin' && userName !== 'admin') {
+    alert('Access Denied !');
+    next(false); // 阻止导航
+  } else if (to.meta.side === 'user' && userName !== 'user') {
+    alert('Access Denied !');
+    next(false); // 阻止导航
+  } else {
+    next(); // 正常导航
+  }
+
   // 检查是否从用户端导航到管理端
   if (from.meta.side === 'user' && to.meta.side === 'admin') {
     // 在新标签页中打开链接

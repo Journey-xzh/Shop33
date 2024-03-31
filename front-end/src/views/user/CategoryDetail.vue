@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ArrowRight} from "@element-plus/icons-vue";
+import {ArrowRight, UserFilled} from "@element-plus/icons-vue";
 import {useRoute} from "vue-router";
 import {computed, reactive, ref} from "vue";
 import {getByCatid} from "@/api/user";
@@ -41,7 +41,7 @@ const removeFromCart = (item) => {
 
 const totalPrice = computed(() => store.getters.totalPrice);
 
-
+const userName = localStorage.getItem("userName")
 </script>
 
 <template>
@@ -50,11 +50,16 @@ const totalPrice = computed(() => store.getters.totalPrice);
         <router-link to="/user">
             <img src="https://cuhk-web.oss-cn-shenzhen.aliyuncs.com/icon.png">
         </router-link>
-        <router-link to="/admin/category">
-            <el-icon color="#fff" size="27px">
-                <UserFilled/>
-            </el-icon>
-        </router-link>
+        <div class="right">
+            <el-container>
+                <router-link to="/login">
+                    <el-icon color="#fff" size="27px">
+                        <UserFilled/>
+                    </el-icon>
+                </router-link>
+                <p>{{userName}}</p>
+            </el-container>
+        </div>
     </el-header>
 
     <!----------navbar----------->
@@ -183,10 +188,24 @@ const totalPrice = computed(() => store.getters.totalPrice);
     display: inline-block;
 }
 
-.el-header .el-icon {
+.el-header .right {
+    height: 100%;
     float: right;
-    padding-top: 14px;
-    padding-right: 10px;
+    color: #ffffff;
+}
+
+.el-header .right .el-container {
+    height: 100%;
+    align-items: center;
+}
+
+.el-header .right .el-icon {
+    margin-top: 3px;
+    margin-right: 8px;
+}
+
+.el-header .right p {
+    margin-right: 6px;
 }
 
 /* -----------navbar------------ */

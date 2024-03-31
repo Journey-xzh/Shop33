@@ -1,4 +1,4 @@
-package com.shop;
+package com.shop.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

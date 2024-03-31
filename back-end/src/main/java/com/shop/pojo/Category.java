@@ -1,4 +1,4 @@
-package com.shop;
+package com.shop.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,15 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Category {
 
-    Integer pid;
+    private Integer catid;
 
-    Integer catid;
-
-    String name;
-
-    Integer price;
-
-    String url;
+    private String name;
 }

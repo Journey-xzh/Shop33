@@ -2,6 +2,8 @@
 import {deleteCategory, getAll, insertCategory, updateCategory} from "@/api/category";
 import {ref, reactive, onMounted} from "vue";
 import { ElForm } from 'element-plus';
+import {useStore} from "vuex";
+import {UserFilled} from "@element-plus/icons-vue";
 
 const tableData = ref([])
 
@@ -82,6 +84,7 @@ const rules = {
     ]
 }
 
+const userName = localStorage.getItem("userName")
 </script>
 
 <template>
@@ -91,6 +94,16 @@ const rules = {
             <router-link to="/user">
                 <img src="https://cuhk-web.oss-cn-shenzhen.aliyuncs.com/icon.png">
             </router-link>
+            <div class="right">
+                <el-container>
+                    <router-link to="/login">
+                        <el-icon color="#fff" size="27px">
+                            <UserFilled/>
+                        </el-icon>
+                    </router-link>
+                    <p>{{userName}}</p>
+                </el-container>
+            </div>
         </el-header>
 
         <el-container>
@@ -179,7 +192,28 @@ const rules = {
 .el-header img {
     height: 50px;
     padding-top: 5px;
+    padding-left: 10px;
     display: inline-block;
+}
+
+.el-header .right {
+    height: 100%;
+    float: right;
+    color: #ffffff;
+}
+
+.el-header .right .el-container {
+    height: 100%;
+    align-items: center;
+}
+
+.el-header .right .el-icon {
+    margin-top: 3px;
+    margin-right: 8px;
+}
+
+.el-header .right p {
+    margin-right: 6px;
 }
 
 .el-menu-vertical {

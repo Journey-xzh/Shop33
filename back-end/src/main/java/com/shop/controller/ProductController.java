@@ -1,8 +1,7 @@
 package com.shop.controller;
 
-import com.shop.Product;
-import com.shop.ProductForm;
-import com.shop.Result;
+import com.shop.pojo.Product;
+import com.shop.pojo.Result;
 import com.shop.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

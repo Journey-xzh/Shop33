@@ -1,6 +1,6 @@
 package com.shop.service;
 
-import com.shop.Category;
+import com.shop.pojo.Category;
 
 import java.util.List;
 

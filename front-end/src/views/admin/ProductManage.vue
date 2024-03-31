@@ -4,6 +4,7 @@ import {onMounted, reactive, ref, watch} from "vue";
 import {getAllProduct, insertProduct, deleteProduct, updateProduct} from "@/api/product";
 import type { UploadInstance } from 'element-plus'
 import {ElUpload} from "element-plus";
+import {UserFilled} from "@element-plus/icons-vue";
 
 // 处理table
 const tableData = ref([])
@@ -157,6 +158,8 @@ const updateRules = {
         { pattern: /^[0-9]+$/, message: 'only accept integer', trigger: 'blur' }
     ],
 }
+
+const userName = localStorage.getItem("userName")
 </script>
 
 <template>
@@ -165,6 +168,16 @@ const updateRules = {
             <router-link to="/user">
                 <img src="https://cuhk-web.oss-cn-shenzhen.aliyuncs.com/icon.png">
             </router-link>
+            <div class="right">
+                <el-container>
+                    <router-link to="/login">
+                        <el-icon color="#fff" size="27px">
+                            <UserFilled/>
+                        </el-icon>
+                    </router-link>
+                    <p>{{userName}}</p>
+                </el-container>
+            </div>
         </el-header>
 
         <el-container>
@@ -297,8 +310,30 @@ const updateRules = {
 .el-header img {
     height: 50px;
     padding-top: 5px;
+    padding-left: 10px;
     display: inline-block;
 }
+
+.el-header .right {
+    height: 100%;
+    float: right;
+    color: #ffffff;
+}
+
+.el-header .right .el-container {
+    height: 100%;
+    align-items: center;
+}
+
+.el-header .right .el-icon {
+    margin-top: 3px;
+    margin-right: 8px;
+}
+
+.el-header .right p {
+    margin-right: 6px;
+}
+
 .el-menu-vertical {
     height: 100%;
 }

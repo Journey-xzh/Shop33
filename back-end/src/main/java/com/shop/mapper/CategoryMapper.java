@@ -1,7 +1,7 @@
 package com.shop.mapper;
 
 
-import com.shop.Category;
+import com.shop.pojo.Category;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public interface CategoryMapper {
             "where catid = #{catid}")
     void delete(Integer catid);
 
-    @Update("update category set name = #{name}" +
+    @Update("update category set name = #{name} " +
             "where catid = #{catid}")
     void update(Category category);
 }

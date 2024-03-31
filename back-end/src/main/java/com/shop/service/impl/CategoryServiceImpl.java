@@ -1,6 +1,6 @@
 package com.shop.service.impl;
 
-import com.shop.Category;
+import com.shop.pojo.Category;
 import com.shop.mapper.CategoryMapper;
 import com.shop.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

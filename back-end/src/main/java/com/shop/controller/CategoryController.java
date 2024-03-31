@@ -1,7 +1,7 @@
 package com.shop.controller;
 
-import com.shop.Category;
-import com.shop.Result;
+import com.shop.pojo.Category;
+import com.shop.pojo.Result;
 import com.shop.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
