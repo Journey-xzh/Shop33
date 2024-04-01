@@ -7,7 +7,7 @@ export const getRecommendation = () => {
     })
 }
 
-export const getByPid = (pid: number) => {
+export const getByPid = (pid) => {
     return axios({
         method: "GET",
         url: "/api/user/product",
@@ -17,7 +17,7 @@ export const getByPid = (pid: number) => {
     })
 }
 
-export const getByCatid = (catid: number) => {
+export const getByCatid = (catid) => {
     return axios({
         method: "GET",
         url: "/api/user/category",

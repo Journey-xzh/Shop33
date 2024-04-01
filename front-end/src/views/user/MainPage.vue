@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import {ArrowRight, UserFilled} from '@element-plus/icons-vue'
 import {getRecommendation} from "@/api/user";
 import {computed, reactive, ref} from "vue";

@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script setup>
 import {ArrowRight, UserFilled} from "@element-plus/icons-vue";
 import {getByPid} from "@/api/user";
-import {computed, onMounted, reactive, ref} from "vue";
+import {computed, reactive, ref} from "vue";
 import {useRoute} from "vue-router";
 import {useStore} from "vuex";
 

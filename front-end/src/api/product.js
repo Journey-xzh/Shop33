@@ -15,7 +15,7 @@ export const insertProduct = (formData) => {
     })
 }
 
-export const deleteProduct = (pid: number) => {
+export const deleteProduct = (pid) => {
     return axios({
         method: "DELETE",
         url: "/api/admin/product",

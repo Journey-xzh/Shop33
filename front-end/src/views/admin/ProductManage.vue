@@ -1,8 +1,6 @@
-<script setup lang="ts">
-import {RouterView } from 'vue-router'
-import {onMounted, reactive, ref, watch} from "vue";
+<script setup>
+import {onMounted, reactive, ref} from "vue";
 import {getAllProduct, insertProduct, deleteProduct, updateProduct} from "@/api/product";
-import type { UploadInstance } from 'element-plus'
 import {ElUpload} from "element-plus";
 import {UserFilled} from "@element-plus/icons-vue";
 
@@ -115,7 +113,7 @@ function updateFormSubmit() {
 // 处理更新和删除
 function handleDelete(row) {
     deleteProduct(row.pid)
-        .then( res => {
+        .then( () => {
             alert("Delete Successfully")
         })
 }

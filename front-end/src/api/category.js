@@ -7,7 +7,7 @@ export const getAll = () => {
     })
 }
 
-export const insertCategory = (name: string) => {
+export const insertCategory = (name) => {
     return axios({
         method: "POST",
         url: "/api/admin/category",
@@ -17,7 +17,7 @@ export const insertCategory = (name: string) => {
     })
 }
 
-export const deleteCategory = (catid: number) => {
+export const deleteCategory = (catid) => {
     return axios({
         method: "DELETE",
         url: "/api/admin/category",
@@ -27,7 +27,7 @@ export const deleteCategory = (catid: number) => {
     })
 }
 
-export const updateCategory = (category: object) => {
+export const updateCategory = (category) => {
     return axios({
         method: "PUT",
         url: "/api/admin/category",

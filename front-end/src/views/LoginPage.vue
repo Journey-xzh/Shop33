@@ -1,8 +1,7 @@
-<script setup lang="ts">
+<script setup>
 import {UserFilled} from "@element-plus/icons-vue";
 import {reactive, ref} from "vue";
 import {changePassword, login} from "@/api/login";
-import {useStore} from "vuex";
 import router from "@/router";
 import {ElForm} from "element-plus";
 
@@ -46,7 +45,7 @@ function loginFormSubmit() {
                         // store.dispatch('setUserName', userName)
                         localStorage.setItem("token", jwt)
                         localStorage.setItem("userName", userName)
-                        if (userName == "admin") {
+                        if (userName === "admin") {
                             router.push("/admin/category")
                         } else {
                             router.push("/user")
@@ -96,7 +95,7 @@ function pwdFormSubmit() {
             formData.append("oldPassword", pwdForm.oldPassword)
             formData.append("newPassword", pwdForm.newPassword)
             changePassword(formData).then(res => {
-                if (res.data.code == 1) {
+                if (res.data.code === 1) {
                     alert("Successfully change password")
                 } else {
                     alert("email or old password ERROR!")
@@ -107,8 +106,6 @@ function pwdFormSubmit() {
         }
     })
 }
-
-
 </script>
 
 <template>

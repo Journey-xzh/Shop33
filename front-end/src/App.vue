@@ -1,5 +1,4 @@
-<script setup lang="ts">
-import {RouterLink, RouterView} from 'vue-router'
+<script setup>
 import axios from "axios"
 
 axios.interceptors.request.use((config) => {
@@ -17,7 +16,7 @@ axios.interceptors.request.use((config) => {
 </script>
 
 <template>
-<!--        <RouterView></RouterView>-->
+    <!--        <RouterView></RouterView>-->
     <router-view :key="$route.fullPath"></router-view>
 </template>
 

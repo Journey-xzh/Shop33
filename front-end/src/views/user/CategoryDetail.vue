@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import {ArrowRight, UserFilled} from "@element-plus/icons-vue";
 import {useRoute} from "vue-router";
 import {computed, reactive, ref} from "vue";

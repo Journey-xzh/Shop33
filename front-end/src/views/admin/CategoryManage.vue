@@ -1,8 +1,7 @@
-<script setup lang="ts">
+<script setup>
 import {deleteCategory, getAll, insertCategory, updateCategory} from "@/api/category";
 import {ref, reactive, onMounted} from "vue";
 import { ElForm } from 'element-plus';
-import {useStore} from "vuex";
 import {UserFilled} from "@element-plus/icons-vue";
 
 const tableData = ref([])
@@ -33,7 +32,7 @@ function insertFormSubmit() {
         if (valid) {
             insertFormVisible.value = false
             insertCategory(form.categoryName)
-                .then(res => {
+                .then(() => {
                     alert("Sucessfully Add New Category")
                 })
         } else {
@@ -48,7 +47,7 @@ function updateFormSubmit() {
             updateFormVisible.value = false
             category.name = form.categoryName
             updateCategory(category)
-                .then(res => {
+                .then(() => {
                     alert("Sucessfully Update Category")
                 })
         } else {
@@ -63,7 +62,7 @@ function handleAdd() {
 
 function handleDelete(row) {
     deleteCategory(row.catid)
-        .then(res => {
+        .then(() => {
             alert("Delete Successfully")
         })
 }
