@@ -111,10 +111,10 @@ function pwdFormSubmit() {
 <template>
     <!----------header----------->
     <el-header>
-        <router-link to="/user">
+        <router-link to="/tourist">
             <img src="https://cuhk-web.oss-cn-shenzhen.aliyuncs.com/icon.png">
         </router-link>
-        <router-link to="/admin/category">
+        <router-link to="/login">
             <el-icon color="#fff" size="27px">
                 <UserFilled/>
             </el-icon>

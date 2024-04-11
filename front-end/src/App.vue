@@ -1,5 +1,6 @@
 <script setup>
 import axios from "axios"
+// import PayPal from "@/components/PayPal.vue";
 
 axios.interceptors.request.use((config) => {
     const url = config.url
@@ -11,12 +12,13 @@ axios.interceptors.request.use((config) => {
             config.headers.Authorization = `Bearer ${token}`
             return config
         }
+        return config
     }
 })
 </script>
 
 <template>
-    <!--        <RouterView></RouterView>-->
+<!--    <PayPal></PayPal>-->
     <router-view :key="$route.fullPath"></router-view>
 </template>
 

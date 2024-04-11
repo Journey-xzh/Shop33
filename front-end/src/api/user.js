@@ -26,3 +26,10 @@ export const getByCatid = (catid) => {
         }
     })
 }
+
+export const getOrder = () => {
+    return axios({
+        method: "GET",
+        url: "/api/user/order"
+    })
+}

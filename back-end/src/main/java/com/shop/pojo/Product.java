@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Product {
 
-    Integer pid;
+    private Integer pid;
 
-    Integer catid;
+    private Integer catid;
 
-    String name;
+    private String name;
 
-    Integer price;
+    private Integer price;
 
-    String url;
+    private String url;
 }

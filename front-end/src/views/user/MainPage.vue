@@ -3,6 +3,8 @@ import {ArrowRight, UserFilled} from '@element-plus/icons-vue'
 import {getRecommendation} from "@/api/user";
 import {computed, reactive, ref} from "vue";
 import {useStore} from "vuex";
+import router from "@/router";
+import PayPal from "@/components/PayPal.vue";
 
 const bannerImgs = ["https://cuhk-web.oss-cn-shenzhen.aliyuncs.com/banner1.png",
     "https://cuhk-web.oss-cn-shenzhen.aliyuncs.com/banner2.png"]
@@ -39,9 +41,19 @@ const removeFromCart = (item) => {
     store.dispatch('removeFromCart', item);
 };
 
+const clearCart = () => {
+    store.dispatch('clearCart')
+}
+
 const totalPrice = computed(() => store.getters.totalPrice);
 
 const userName = localStorage.getItem("userName")
+
+const handleLogout = () => {
+    localStorage.setItem("userName", null)
+    router.push("/login")
+}
+
 </script>
 
 <template>
@@ -52,12 +64,14 @@ const userName = localStorage.getItem("userName")
         </router-link>
         <div class="right">
             <el-container>
-                <router-link to="/login">
-                    <el-icon color="#fff" size="27px">
-                        <UserFilled/>
-                    </el-icon>
-                </router-link>
-                <p>{{userName}}</p>
+                <el-icon color="#fff" size="27px">
+                    <UserFilled/>
+                </el-icon>
+                <p class="name">{{ userName }}</p>
+                <div class="expanded">
+                    <p>log in</p>
+                    <p @click="handleLogout">log out</p>
+                </div>
             </el-container>
         </div>
     </el-header>
@@ -102,8 +116,8 @@ const userName = localStorage.getItem("userName")
 
         <el-icon class="shop-cart" color="#fff" size="27px" @click="drawer = true"><ShoppingCart /></el-icon>
         <el-drawer v-model="drawer" :with-header="false">
-            <p>Total: ￥<span>{{ totalPrice }}</span></p>
-            <el-table :data="cart" style="width: 100%; height: 100%">
+            <p>Total: $<span>{{ totalPrice }}</span></p>
+            <el-table :data="cart" height="600" style="width: 100%; height: 600px">
                 <el-table-column prop="url" label="">
                     <template v-slot:default="scope">
                         <el-image :src="scope.row.url" fit="contain"></el-image>
@@ -111,7 +125,7 @@ const userName = localStorage.getItem("userName")
                 </el-table-column>
                 <el-table-column prop="" label="Price">
                     <template v-slot:default="scope">
-                        ￥{{ scope.row.price * scope.row.quantity }}
+                        ${{ scope.row.price * scope.row.quantity }}
                     </template>
                 </el-table-column>
                 <el-table-column prop="quantity" label="Number">
@@ -121,12 +135,16 @@ const userName = localStorage.getItem("userName")
                         <el-button @click="increaseQuantity(scope.row)" circle style="width:10px;height:10px;margin-left:5px">+</el-button>
                     </template>
                 </el-table-column>
-                <el-table-column prop="address" label="Operation">
+                <el-table-column prop="operation" label="Operation">
                     <template v-slot:default="scope">
                         <el-button link type="primary" size="small" @click="removeFromCart(scope.row)">Delete</el-button>
                     </template>
                 </el-table-column>
             </el-table>
+<!--            <el-button style="width: 280px;margin-left: 50px;margin-top: 20px;background-color:#131921;">-->
+<!--                <span style="color: white">checkout</span>-->
+<!--            </el-button>-->
+            <PayPal :cartItems="cart" :total="totalPrice" @clearCart="clearCart" style="margin-left: 55px"></PayPal>
         </el-drawer>
     </div>
 
@@ -194,7 +212,7 @@ const userName = localStorage.getItem("userName")
                     <router-link :to="`/user/product/${product.pid}`">
                         <el-image :src="product.url" fit="scale-down"></el-image>
                         <p class="goods-name">{{ product.name }}</p>
-                        <p class="goods-price">￥ {{ product.price }}</p>
+                        <p class="goods-price">$ {{ product.price }}</p>
                     </router-link>
                     <button class="goods-button" @click="addToCart(product)">Add To Cart</button>
                 </li>
@@ -245,9 +263,54 @@ const userName = localStorage.getItem("userName")
     margin-right: 8px;
 }
 
-.el-header .right p {
+.el-header .right .el-icon:hover {
+    cursor: pointer;
+}
+
+.el-header .right .name {
     margin-right: 6px;
 }
+
+.expanded {
+    width: 80px;
+    height: 75px;
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+    position: absolute;
+    top: 50px;
+    right: 80px;
+    display: none;
+}
+
+.right:hover .expanded {
+    display: block;
+}
+
+.expanded p {
+    height: 30px;
+    padding-left: 13px;
+    font-family: "Helvetica Neue";
+}
+
+.expanded p:first-child {
+    padding-top: 8px;
+    border-radius: 5px 5px 0 0;
+}
+
+.expanded p:last-child {
+    padding-top: 8px;
+    border-radius: 0 0 5px 5px;
+}
+
+.expanded p:hover {
+    background-color: #c8c9cc;
+    cursor: pointer;
+}
+
+/* drawer */
+
 
 /* -----------navbar------------ */
 .navbar {

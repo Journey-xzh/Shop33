@@ -3,6 +3,7 @@ import {deleteCategory, getAll, insertCategory, updateCategory} from "@/api/cate
 import {ref, reactive, onMounted} from "vue";
 import { ElForm } from 'element-plus';
 import {UserFilled} from "@element-plus/icons-vue";
+import router from "@/router";
 
 const tableData = ref([])
 
@@ -84,23 +85,30 @@ const rules = {
 }
 
 const userName = localStorage.getItem("userName")
+
+const handleLogout = () => {
+    localStorage.setItem("userName", null)
+    router.push("/login")
+}
 </script>
 
 <template>
     <el-container class="baseContainer">
         <!----------header----------->
         <el-header>
-            <router-link to="/user">
+            <router-link to="/admin">
                 <img src="https://cuhk-web.oss-cn-shenzhen.aliyuncs.com/icon.png">
             </router-link>
             <div class="right">
                 <el-container>
-                    <router-link to="/login">
-                        <el-icon color="#fff" size="27px">
-                            <UserFilled/>
-                        </el-icon>
-                    </router-link>
-                    <p>{{userName}}</p>
+                    <el-icon color="#fff" size="27px">
+                        <UserFilled/>
+                    </el-icon>
+                    <p class="name">{{ userName }}</p>
+                    <div class="expanded">
+                        <p>log in</p>
+                        <p @click="handleLogout">log out</p>
+                    </div>
                 </el-container>
             </div>
         </el-header>
@@ -124,6 +132,10 @@ const userName = localStorage.getItem("userName")
                             <setting/>
                         </el-icon>
                         <router-link to="/admin/product" class="custom-link">Product</router-link>
+                    </el-menu-item>
+                    <el-menu-item index="3">
+                        <el-icon><ShoppingCart /></el-icon>
+                        <router-link to="/admin/order" class="custom-link">Order</router-link>
                     </el-menu-item>
                 </el-menu>
             </el-aside>
@@ -211,8 +223,50 @@ const userName = localStorage.getItem("userName")
     margin-right: 8px;
 }
 
-.el-header .right p {
+.el-header .right .el-icon:hover {
+    cursor: pointer;
+}
+
+.el-header .right .name {
     margin-right: 6px;
+}
+
+.expanded {
+    width: 80px;
+    height: 75px;
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+    position: absolute;
+    top: 50px;
+    right: 80px;
+    display: none;
+}
+
+.right:hover .expanded {
+    display: block;
+}
+
+.expanded p {
+    height: 30px;
+    padding-left: 13px;
+    font-family: "Helvetica Neue";
+}
+
+.expanded p:first-child {
+    padding-top: 8px;
+    border-radius: 5px 5px 0 0;
+}
+
+.expanded p:last-child {
+    padding-top: 8px;
+    border-radius: 0 0 5px 5px;
+}
+
+.expanded p:hover {
+    background-color: #c8c9cc;
+    cursor: pointer;
 }
 
 .el-menu-vertical {

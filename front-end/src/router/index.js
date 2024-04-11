@@ -5,7 +5,22 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: '/login',
+            redirect: '/tourist',
+        },
+        {
+            path: '/tourist',
+            component: () => import('../views/tourist/TouristMainPage.vue'),
+            meta: { side: 'tourist' }
+        },
+        {
+            path: '/tourist/product/:pid?',
+            component: () => import('../views/tourist/TouristProductPage.vue'),
+            meta: { side: 'tourist' }
+        },
+        {
+            path: '/tourist/category/:catid?',
+            component: () => import('../views/tourist/TouristCategoryPage.vue'),
+            meta: { side: 'tourist' }
         },
         {
             path: '/user',
@@ -37,6 +52,11 @@ const router = createRouter({
             meta: { side: 'admin' }
         },
         {
+            path: '/admin/order',
+            component: () => import('../views/admin/OrderManage.vue'),
+            meta: { side: 'admin' }
+        },
+        {
             path: '/login',
             component: () => import('../views/LoginPage.vue'),
             meta: {side: 'login'}
@@ -45,10 +65,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    // const userName = store.state.userName
-    // console.log("userName: ", userName)
     const userName = localStorage.getItem("userName")
-    console.log("userName: ", userName)
     // 检查角色
     if (to.meta.side === 'admin' && userName !== 'admin') {
         alert('Access Denied !');

@@ -10,11 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 public class ProductForm {
 
-    Integer catid;
+    private Integer catid;
 
-    String name;
+    private String name;
 
-    Integer price;
+    private Integer price;
 
-    MultipartFile file;
+    private MultipartFile file;
 }

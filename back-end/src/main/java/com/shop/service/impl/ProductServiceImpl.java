@@ -1,5 +1,7 @@
 package com.shop.service.impl;
 
+import com.shop.dto.PaymentDTO;
+import com.shop.pojo.Order;
 import com.shop.pojo.Product;
 import com.shop.mapper.ProductMapper;
 import com.shop.service.ProductService;
@@ -75,6 +77,45 @@ public class ProductServiceImpl implements ProductService {
         product.setUrl(url);
 
         productMapper.adminUpdate(product);
+    }
+
+    @Override
+    public List<Product> touristQuery() {
+        List<Product> products = productMapper.touristQuery();
+        return products;
+    }
+
+    @Override
+    public Product touristGetByPid(Integer pid) {
+        Product product = productMapper.touristGetByPid(pid);
+        return product;
+    }
+
+    @Override
+    public List<Product> touristGetByCatid(Integer catid) {
+        List<Product> products = productMapper.touristGetByCatid(catid);
+        return products;
+    }
+
+    @Override
+    public void userPayment(PaymentDTO[] paymentDTOS) {
+        Integer maxId = productMapper.getMaxOrderId();
+        Order order = new Order();
+        order.setId(maxId + 1);
+        for (int i = 0; i < paymentDTOS.length; i++) {
+            order.setPid(paymentDTOS[i].getPid());
+            order.setCatid(paymentDTOS[i].getCatid());
+            order.setName(paymentDTOS[i].getName());
+            order.setPrice(paymentDTOS[i].getPrice());
+            order.setQuantity(paymentDTOS[i].getQuantity());
+            productMapper.userPayment(order);
+        }
+    }
+
+    @Override
+    public List<Order> getOrder() {
+        List<Order> orders = productMapper.getOrder();
+        return orders;
     }
 
 }
